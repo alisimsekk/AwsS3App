@@ -1,0 +1,16 @@
+services:
+  s3-demo-localstack:
+    image: localstack/localstack:4.1.0
+    environment:
+      - SERVICES=s3
+      - EDGE_PORT=4566
+      - AWS_DEFAULT_REGION=us-east-1
+      - DATA_DIR=/tmp/localstack4/data
+    ports:
+      - "4566:4566"
+    volumes:
+      - s3-demo-localstack-data:/tmp/localstack4
+      - ./aws-init.sh:/docker-entrypoint-initaws.d/aws-init.sh
+
+volumes:
+  s3-demo-localstack-data:

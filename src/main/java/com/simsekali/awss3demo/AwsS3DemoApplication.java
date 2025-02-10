@@ -1,4 +1,4 @@
-package com.simsekali.aws_s3_demo;
+package com.simsekali.awss3demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
