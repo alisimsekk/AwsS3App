@@ -1,7 +1,6 @@
 spring:
   cloud:
     aws:
-      endpoint: http://localhost:4566
       region:
         static: us-east-1
       credentials:
@@ -9,7 +8,9 @@ spring:
         access-key: test
         secret-key: test
       s3:
+        endpoint: http://localhost:4566
         bucketName: s3-demo-bucket
+        path-style-access: true
   servlet:
     multipart:
       max-request-size: 10MB
