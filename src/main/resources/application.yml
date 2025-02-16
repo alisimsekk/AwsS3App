@@ -1,4 +1,15 @@
+server:
+  port: 8088
+
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/s3-demo
+    username: postgres
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   cloud:
     aws:
       region:
