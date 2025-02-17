@@ -1,4 +1,4 @@
-package com.simsekali.awss3demo.config;
+package com.simsekali.awss3demo.aws.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
