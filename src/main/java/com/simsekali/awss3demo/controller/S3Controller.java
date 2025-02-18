@@ -1,6 +1,7 @@
 package com.simsekali.awss3demo.controller;
 
 import com.simsekali.awss3demo.controller.dto.FileUploadedResponse;
+import com.simsekali.awss3demo.controller.dto.S3ResourceDTO;
 import com.simsekali.awss3demo.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 import static com.simsekali.awss3demo.utils.AwsS3Utils.determineContentType;
 
 @RestController
-@RequestMapping("/api/files")
+@RequestMapping("/api/v1/files")
 @RequiredArgsConstructor
 @Slf4j
 public class S3Controller {
@@ -46,5 +49,16 @@ public class S3Controller {
         headers.setContentDispositionFormData("attachment", key);
 
         return new ResponseEntity<>(fileData, headers, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public List<S3ResourceDTO> listFiles() {
+        return s3Service.listObjects();
+    }
+
+    @DeleteMapping("/{key}")
+    public ResponseEntity<Void> deleteFile(@PathVariable String key) {
+        s3Service.deleteFile(key);
+        return ResponseEntity.ok().build();
     }
 }
