@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class FileUploadedResponse {
-    public String fileKey;
-    public String fileUrl;
+    private String fileKey;
+    private String fileUrl;
 }
